@@ -3,9 +3,13 @@ server:
 
 spring:
   datasource:
+    drive-class-name: org.h2.Driver
     url: jdbc:postgresql://localhost:5432/ead-authuser
     username: postgres
     password: root
+    #url: jdbc:h2:file:/home/wolmir/dbh2teset
+    #username: sa
+    #password: 
     
   jpa:
     hibernate:
@@ -17,3 +21,8 @@ spring:
       hibernate:
         show_sql: true
         
+
+  h2:
+    console:
+      enabled: true
+      path: /h2
