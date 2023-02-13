@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    drive-class-name: org.h2.Driver
+    drive-class-name: org.postgreSQL.Driver
     url: jdbc:postgresql://localhost:5432/ead-authuser
     username: postgres
     password: root

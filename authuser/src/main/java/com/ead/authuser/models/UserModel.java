@@ -46,7 +46,7 @@ public class UserModel implements Serializable {
 
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
-	private UserStatus userSatus;
+	private UserStatus userStatus;
 
 	@Enumerated(EnumType.STRING)
 	private UserType userType;
