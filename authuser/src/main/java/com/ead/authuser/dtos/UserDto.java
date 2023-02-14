@@ -2,6 +2,7 @@ package com.ead.authuser.dtos;
 
 import java.util.UUID;
 
+import com.ead.authuser.validation.UsernameConstraint;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -24,22 +25,23 @@ public class UserDto {
 	private UUID userId;
 	/* O groups() adiciona um grupo especifico para que seja chamado apenas quando acionado a interface */
 	@NotBlank(groups = UserView.RegistrationPost.class)   /* NotBlank Não permite valores nullos e valores vazios */
-	@Size(min = 4, max = 50)
+	@Size(min = 4, max = 50, groups = UserView.RegistrationPost.class)
+	@UsernameConstraint(groups = UserView.RegistrationPost.class)
 	@JsonView(UserView.RegistrationPost.class)
 	private String username;
 	
 	@NotBlank(groups = UserView.RegistrationPost.class)
-	@Email  /* Verifica se é um email valido */
+	@Email(groups = UserView.RegistrationPost.class)  /* Verifica se é um email valido */
 	@JsonView(UserView.RegistrationPost.class)
 	private String email;
 	
 	@NotBlank(groups = {UserView.RegistrationPost.class, UserView.PasswordPut.class})
-	@Size(min = 6, max = 20)
+	@Size(min = 6, max = 20, groups = {UserView.RegistrationPost.class, UserView.PasswordPut.class})
 	@JsonView({UserView.RegistrationPost.class, UserView.PasswordPut.class})
 	private String password;
 	
 	@NotBlank(groups = UserView.PasswordPut.class)
-	@Size(min = 6, max = 20)
+	@Size(min = 6, max = 20, groups = UserView.RegistrationPost.class)
 	@JsonView(UserView.PasswordPut.class)
 	private String oldPassword;
 	
