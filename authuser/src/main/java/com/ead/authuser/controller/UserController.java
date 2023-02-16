@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ead.authuser.dtos.UserDto;
 import com.ead.authuser.dtos.UserDto.UserView;
 import com.ead.authuser.models.UserModel;
-import com.ead.authuser.service.UserService;
+import com.ead.authuser.services.UserService;
 import com.ead.authuser.specification.SpecificationTemplate;
 import com.fasterxml.jackson.annotation.JsonView;
 
