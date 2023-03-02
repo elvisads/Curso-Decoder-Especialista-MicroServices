@@ -57,4 +57,5 @@ public class UserDto {
 	@NotBlank(groups = UserView.ImagePut.class)
 	@JsonView(UserView.ImagePut.class)
 	private String imageUrl;
+
 }
