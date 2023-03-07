@@ -3,12 +3,15 @@ package com.ead.authuser.controller;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +30,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 @RequestMapping("/auth")
 public class AuthenticationController {
 
+	Logger logger = LoggerFactory.getLogger(AuthenticationController.class);
+	
 	@Autowired
 	UserService userService;
 
@@ -49,4 +54,20 @@ public class AuthenticationController {
 		userService.save(userModel);
 		return ResponseEntity.status(HttpStatus.CREATED).body(userModel);
 	}
+	
+	@GetMapping("/")
+	public String index() {
+		logger.trace("TRACE");
+		logger.debug("DEBUG");
+		logger.info("INFO");
+		logger.warn("WARN");
+		logger.error("ERROR");
+		return "Logging Spring Boot. . .";
+	}
 }
+
+
+
+
+
+
