@@ -3,14 +3,9 @@ server:
 
 spring:
   datasource:
-    drive-class-name: org.postgreSQL.Driver
-    url: jdbc:postgresql://localhost:5432/ead-authuser
+    url:  jdbc:postgresql://localhost:5432/ead-authuser
     username: postgres
     password: root
-    #url: jdbc:h2:file:/home/wolmir/dbh2teset
-    #username: sa
-    #password: 
-    
   jpa:
     hibernate:
       ddl-auto: update
@@ -20,25 +15,14 @@ spring:
     properties:
       hibernate:
         show_sql: true
-        
-
-  h2:
-    console:
-      enabled: true
-      path: /h2
-      
   output:
     ansi:
-      enabled: ALWAYS
-  
+      enabled: always
+
+
 logging:
   level:
     com.ead: TRACE
     root: INFO
     org.springframework.web: DEBUG
     org.hibernate: INFO
-    
-    
-    
-    
-    
