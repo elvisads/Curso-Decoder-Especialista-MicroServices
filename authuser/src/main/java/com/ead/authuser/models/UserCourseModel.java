@@ -33,5 +33,4 @@ public class UserCourseModel implements Serializable {
 	@Column(nullable = false)
 	private UUID courseId;
 	
-
 }
