@@ -27,34 +27,37 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
-@JsonInclude(JsonInclude.Include.NON_NULL) /* Faz com que ao dar um get nesta classe não mostre os campo que estiverem em branco no JSON*/
+@JsonInclude(JsonInclude.Include.NON_NULL) /*
+											 * Faz com que ao dar um get nesta classe não mostre os campo que estiverem
+											 * em branco no JSON
+											 */
 @Entity
 @Table(name = "TB_COURSES")
-public class CourseModel  implements Serializable {
+public class CourseModel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID courseId;
-	
+
 	@Column(nullable = false, length = 150)
 	private String name;
 
 	@Column(nullable = false, length = 250)
 	private String description;
-	
+
 	@Column
 	private String imageUrl;
-	
+
 //	@JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy HH:mm:ss")
-	@JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
 	@Column(nullable = false)
 	private LocalDateTime creationDate;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
 	@Column(nullable = false)
 	private LocalDateTime lastUpdateDate;
-	
+
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private CourseStatus courseStatus;
@@ -71,5 +74,8 @@ public class CourseModel  implements Serializable {
 	@Fetch(FetchMode.SUBSELECT)
 	private Set<ModuleModel> modules;
 
-	
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
+	private Set<CourseUserModel> coursesUsers;
+
 }
