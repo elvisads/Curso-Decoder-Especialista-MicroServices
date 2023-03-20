@@ -20,7 +20,7 @@ public class CourseDto {
 	
 	private CourseStatus courseStatus;
 	
-	private UUID userInsructor;
+	private UUID userInstructor;
 	
 	private CourseLevel courseLevel;
 	
