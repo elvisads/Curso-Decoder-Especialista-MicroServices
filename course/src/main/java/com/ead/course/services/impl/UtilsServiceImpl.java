@@ -2,6 +2,7 @@ package com.ead.course.services.impl;
 
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -9,12 +10,13 @@ import com.ead.course.services.UtilsService;
 
 @Service
 public class UtilsServiceImpl implements UtilsService {
-	
-	String REQUEST_URI = "http://localhost:8088/";
 
-	public String createUrl(UUID courseId, Pageable pageable) {
-	return REQUEST_URI + "/users?courseId=" + courseId + "&page=" + pageable.getPageNumber() + "&size="
-	+pageable.getPageSize() + "&sort=" + pageable.getSort().toString().replaceAll(": ", ",");
+	@Value("${ead.api.rul.authuser}")
+	String REQUEST_URI;
+
+	public String createUrlGetAllUsersByCourse(UUID courseId, Pageable pageable) {
+		return "/users?courseId=" + courseId + "&page=" + pageable.getPageNumber() + "&size=" + pageable.getPageSize()
+				+ "&sort=" + pageable.getSort().toString().replaceAll(": ", ",");
 	}
 
 }
