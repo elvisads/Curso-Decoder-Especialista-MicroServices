@@ -11,9 +11,6 @@ import com.ead.course.services.UtilsService;
 @Service
 public class UtilsServiceImpl implements UtilsService {
 
-	@Value("${ead.api.rul.authuser}")
-	String REQUEST_URI;
-
 	public String createUrlGetAllUsersByCourse(UUID courseId, Pageable pageable) {
 		return "/users?courseId=" + courseId + "&page=" + pageable.getPageNumber() + "&size=" + pageable.getPageSize()
 				+ "&sort=" + pageable.getSort().toString().replaceAll(": ", ",");

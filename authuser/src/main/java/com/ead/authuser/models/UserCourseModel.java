@@ -13,9 +13,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL) /* Faz com que ao dar um get nesta classe não mostre os campo que estiverem em branco no JSON*/
 @Entity
 @Table(name = "TB_USERS_COURSES")
@@ -27,10 +31,11 @@ public class UserCourseModel implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID id;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	private UserModel user;
-	
 	@Column(nullable = false)
 	private UUID courseId;
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	private UserModel user;
 	
 }

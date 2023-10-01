@@ -18,7 +18,7 @@ public class UserDto {
 
     private String fullName;
 
-    private UserStatus userSatus;
+    private UserStatus userStatus;
     
     private UserType userType;
     
